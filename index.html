@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parser</title>
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+        integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Аналіз кошику покупця</h1>
+    </div>
+
+    <!-- Перший блок: таблиця з чеків -->
+    <div class="container">
+        <h2>Транзакції</h2>
+        <table id="dynamicTable">
+            <thead>
+                <tr>
+                    <th>Чек</th>
+                    <th>Продукти</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Блок з мінімальною підтримкою -->
+    <div class="container">
+        <h2>Мінімальна підтримка: 0.5</h2>
+    </div>
+
+    <!-- Другий блок: таблиця з кількістю покупок кожного продукту та розрахунком підтримки -->
+    <div class="container">
+        <div>
+            <h2>K = 1</h2>
+        </div>
+        <h2>Кількість покупок кожного продукту</h2>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Продукт</th>
+                    <th>Кількість</th>
+                    <th>Підтримка</th>
+                </tr>
+            </thead>
+            <tbody>                
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Третій блок: таблиця з парами продуктів -->
+    <div class="container">
+        <div>
+            <h2>K = 2</h2>
+        </div>
+        <h2>Кількість покупок пар продуктів</h2>
+        <table id="pairProductTable">
+            <thead>
+                <tr>
+                    <th>Продукти</th>
+                    <th>Кількість</th>
+                    <th>Підтримка</th>
+                </tr>
+            </thead>
+            <tbody>               
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Четвертий блок: таблиця з трійками продуктів -->
+    <div class="container">
+        <div>
+            <h2>K = 3</h2>
+        </div>
+        <h2>Кількість покупок трійок продуктів</h2>
+        <table id="tripletProductTable">
+            <thead>
+                <tr>
+                    <th>Продукти</th>
+                    <th>Кількість</th>
+                    <th>Підтримка</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Пʼятий блок: таблиця з четвірками продуктів -->
+    <div class="container">
+        <div>
+            <h2>K = 4</h2>
+        </div>
+        <h2>Кількість покупок четвірок продуктів</h2>
+        <table id="quadProductTable">
+            <thead>
+                <tr>
+                    <th>Продукти</th>
+                    <th>Кількість</th>
+                    <th>Підтримка</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Шостий блок: таблиця з пʼятірками продуктів -->
+    <div class="container">
+        <div>
+            <h2>K = 5</h2>
+        </div>
+        <h2>Кількість покупок пʼятірок продуктів</h2>
+        <table id="fiveProductTable">
+        <thead>
+            <tr>
+                <th>Продукти</th>
+                <th>Кількість</th>
+                <th>Підтримка</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    </div>
+
+    <!-- Блок з мінімальною достовірністю -->
+    <div class="container">
+        <h2>Мінімальна достовірність: 0.75</h2>
+    </div>
+
+    <!-- Сьомий блок: таблиця з ап -->
+    <div class="container">
+        <h2>Асоціативні правила</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Якщо</th>
+                    <th>То</th>
+                    <th>С</th>
+                </tr>
+            </thead>
+            <tbody id="ifThenTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Сьомий блок: таблиця з розрахуками ліфт, леверідж, поліпшення -->
+    <div class="container">
+        <h2>Розрахунки ліфта, леверіджа та поліпшення</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Якщо</th>
+                    <th>То</th>
+                    <th>С</th>
+                    <th>Ліфт</th>
+                    <th>Леверідж</th>
+                    <th>Поліпшення</th>
+                </tr>
+            </thead>
+            <tbody id="calculationsTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Генерація списку -->
+    <div class="container">
+        <button class="gcbtn" id="generateCartButton">Згенерувати корзину</button>
+        <!-- Список продуктів -->
+        <div id="shoppingListContainer" class="container" style="display: none; float: left; margin-top: 20px;">
+            <h2 class="list">Список продуктів</h2>
+            <ul id="shoppingList"></ul>
+        </div>
+        <!-- Секція для відображення вибраних продуктів та асоціацій -->
+        <div id="selectedProductsContainer" class="container" style="display: none; float: right; margin-top: 20px;">
+            <h2 class="list">Вибрані продукти та асоціації</h2>
+            <ul id="selectedProductsList"></ul>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
